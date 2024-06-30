@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<div class="login-container">
+    <form class="login-form" method="POST" action="{{ url_for('login') }}">
+        <h2>Login</h2>
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </div>
+        <div>
+            {{ form.submit }}
+        </div>
+        <p class="message">Not registered yet? <a href="/register">Register</a></p>
+    </form>
+</div>
+
+{% endblock %}
+

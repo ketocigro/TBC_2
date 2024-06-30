@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Add Item</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.category.label }}<br>
+            {{ form.category(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.name.label }}<br>
+            {{ form.name(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.price.label }}<br>
+            {{ form.price(class="form-control", type="number", step="any") }} {# Use type="number" for numeric input #}
+        </div>
+        <div class="form-group">
+            {{ form.img.label }}<br>
+            {{ form.img(class="form-control") }}
+        </div>
+        {% if form.id %}
+        <div class="form-group">
+            {{ form.id.label }}<br>
+            {{ form.id(class="form-control") }}
+        </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+    </form>
+</div>
+{% endblock %}

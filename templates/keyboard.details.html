@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-main">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="/static/harmonica.png" alt="Harmonica" class="harmonica"></a>
+        <form class="d-flex ms-auto me-auto" style="max-width: 500px;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+        <div class="auth-buttons ms-auto">
+            <a href="/register" class="btn btn-custom">Register</a>
+            <a href="/login" class="btn btn-custom">Login</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 pt-4 pb-4">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ keyboard['img'] }}" class="img-fluid" alt="{{ keyboard['name'] }}">
+        </div>
+        <div class="col-md-6">
+            <h1>{{ keyboard['name'] }}</h1>
+            <h2 class="product-price">{{ keyboard['price'] }}₾</h2>
+            <p>Here you can add a detailed description of the keyboard.</p>
+            <button class="btn btn-custom">Add to favourites</button>
+        </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2>Comments</h2>
+            <hr>
+            {% for comment in comments %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">{{ comment.content }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Add Comment Form -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2>Add a Comment</h2>
+            <form method="POST" action="/add_comment">
+                <div class="mb-3">
+                    <label for="content" class="form-label">Comment</label>
+                    <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+                </div>
+                <input type="hidden" name="product_id" value="{{ keyboard['id'] }}">
+                <button type="submit" class="btn btn-primary">Submit Comment</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

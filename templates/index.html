@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container mt-3 pt-5">
+  <div class="harmonica-container">
+    <img src="{{ url_for('static', filename='harmonica.png') }}" alt="Harmonica" class="harmonica">
+  </div>
+
+  <section>
+    <nav>
+      <ul class="menuItems">
+        <li><a href='/guitars' data-item='Guitars'>Guitars</a></li>
+        <li><a href='/basses' data-item='Basses'>Basses</a></li>
+        <li><a href='/keyboards' data-item='Keyboards'>Keyboards</a></li>
+        <li><a href='/microphones' data-item='Microphones'>Microphones</a></li>
+        <li><a href='/accessories' data-item='Accessories'>Accessories</a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <footer>
+    <div class="auth-buttons">
+      <a href="/register">
+        <button class="register-btn">Register</button>
+      </a>
+      <a href="/login">
+        <button class="login-btn">Login</button>
+      </a>
+    </div>
+  </footer>
+</div>
+{% endblock %}
